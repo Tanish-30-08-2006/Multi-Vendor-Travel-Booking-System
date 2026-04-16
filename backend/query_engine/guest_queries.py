@@ -131,7 +131,7 @@ def search_hotels(city, checkin_date, star_filter, price_tier):
             SELECT 
                 h.hotel_name, 
                 h.city,
-                h.address,
+                h.full_address,
                 h.star_rating, 
                 v.company_name, 
                 rc.category_name, 
