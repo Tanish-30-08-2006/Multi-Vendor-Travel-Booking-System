@@ -25,7 +25,7 @@ To serve the distinct needs of every user role, we divided the ecosystem into **
 The backbone of this platform is a highly normalized relational database handling bookings (Transport, Hotel, Packages), review systems, insurance linking, and complex scheduling.
 
 <details>
-  <summary><b>📄 Click here to unfold the massive Entity-Relationship (ER) Schema</b></summary>
+  <summary><b>📄 Click here to unfold Entity-Relationship (ER) Schema</b></summary>
   
   <br>
 
@@ -34,7 +34,7 @@ The backbone of this platform is a highly normalized relational database handlin
 </details>
 
 <details>
-  <summary><b>📄 Click here to unfold the massive Relational Database Schema</b></summary>
+  <summary><b>📄 Click here to unfold the Relational Database Schema</b></summary>
   
   <br>
 
