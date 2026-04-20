@@ -1,6 +1,6 @@
 # 🌍 Multi-Vendor Travel Booking System
 
-Welcome to the **Multi-Vendor Travel Booking System**, a robust, enterprise-grade application crafted to unify a highly fragmented travel industry. 
+Welcome to the **Trip and Travel Booking System**, a robust, enterprise-grade application crafted to unify a highly fragmented travel industry. 
 
 ---
 
@@ -10,19 +10,19 @@ Welcome to the **Multi-Vendor Travel Booking System**, a robust, enterprise-grad
 Currently, the travel ecosystem is deeply fragmented. Travellers must juggle multiple platforms to book a flight, secure a hotel, arrange holiday packages, and manage their trip insurance. On the other side, vendors (airlines, hotel chains, and tour operators) lack unified analytics to see how they perform in the broader marketplace. Furthermore, platform administrators have zero visibility into cross-sector revenue and platform-wide service quality.
 
 ### 💡 Our Solution: Why 4 Portals?
-We designed a comprehensive, command-line interface (CLI) ecosystem that solves this fragmentation by uniting all stakeholders under a single architecture. 
+We designed a comprehensive, command-line interface (CLI) that solves this fragmentation by uniting all stakeholders under a single architecture. 
 
 To serve the distinct needs of every user role, we divided the ecosystem into **4 Specialized Portals**:
 1. **Guest Portal:** Allows unauthenticated users to explore the universe of flights, trains, hotels, and holiday packages, equipped with advanced filtering and price-comparison tools.
 2. **Traveller Portal:** A secure dashboard where registered users can manage their complete booking histories, track upcoming itineraries, monitor refunds, and analyze their personal travel spending.
-3. **Vendor Portal:** A corporate CRM and financial dashboard for travel providers (like IndiGo, Marriott, or IRCTC). They can track live sales, manage upcoming customer logistics, monitor "Demand Tags" (e.g., "🔥 LOW AVAILABILITY"), and respond to poor reviews.
+3. **Vendor Portal:** A corporate CRM for travel providers (like IndiGo, Marriott, or IRCTC). They can track live sales, manage upcoming customer logistics and respond to poor reviews.
 4. **Admin Portal:** The supreme command center. Platform owners use this to oversee global revenue, process pending cancellation refunds across all vendors, track macro-level booking trends, and identify the highest and lowest-rated vendors on the platform.
 
 ---
 
 ## 🗺️ 2. Database Schema Architecture
 
-The backbone of this platform is a highly normalized relational database handling polymorphic bookings (Transport, Hotel, Packages), review systems, insurance linking, and complex scheduling.
+The backbone of this platform is a highly normalized relational database handling bookings (Transport, Hotel, Packages), review systems, insurance linking, and complex scheduling.
 
 ![ER Schema Visualization](ER_DOCUMENTATION_V2/ER_SCHEMA_VISUALIZATION_IMAGE.png)
 
@@ -33,7 +33,7 @@ The backbone of this platform is a highly normalized relational database handlin
 To demonstrate the analytical power of our platform, here are three of the most advanced and practically applied SQL queries driving our application.
 
 ### 🏨 Query 1: Advanced Hotel Search Engine
-**Problem Statement:** A guest wants to find luxury hotels in "Delhi" for "2026-05-01" that have at least a 4.0 star rating, fit within a budget of ₹5,000 to ₹15,000 per night, and most importantly—*actually have available rooms*.
+**Problem Statement:** A guest wants to find luxury hotels in "Delhi" for "2026-05-01" that have at least a 4.0 star rating, fit within a budget of ₹5,000 to ₹15,000 per night, and has available rooms.
 
 **SQL Solution:**
 ```sql
@@ -57,7 +57,7 @@ WHERE h.city = 'Delhi'
   AND rc.price_per_night BETWEEN 5000 AND 15000
 ORDER BY h.star_rating DESC, rc.price_per_night ASC;
 ```
-**Explanation:** This query links four massive tables. It filters out sold-out dates instantly by checking the `Room_Availability` ledger. It then applies the budgetary and quality filters, prioritizing the highest-rated hotels with the most competitive pricing.
+**Explanation:** This query links four tables. It filters out sold-out dates instantly by checking the `Room_Availability`. It then applies the budget and quality filters, prioritizing the highest-rated hotels with the most competitive pricing.
 
 **Required Console Input Data (3 Tested Combinations):**
 
@@ -70,7 +70,7 @@ ORDER BY h.star_rating DESC, rc.price_per_night ASC;
 ---
 
 ### 💳 Query 2: Traveller Spending Summary
-**Problem Statement:** A registered traveller wants to know exactly how much they have spent across *all* service types (Flights, Hotels, Packages) in their lifetime, strictly excluding any bookings that were cancelled.
+**Problem Statement:** A registered traveller wants to know exactly how much they have spent across all service types (Flights, Hotels, Packages) in their lifetime, strictly excluding any bookings that were cancelled.
 
 **SQL Solution:**
 ```sql
@@ -145,11 +145,8 @@ ORDER BY booking_date DESC, b.booking_type;
 
 Our database was meticulously designed to eliminate data redundancy and prevent insert/update/delete anomalies. We achieved this by ensuring every single relation is rigidly in **Boyce-Codd Normal Form (BCNF)**. 
 
-### What are FDs in Simple English?
-A Functional Dependency (FD) simply means: *"If I know attribute A, I can uniquely and definitively look up attribute B."* 
-
 ### The Proof
-To prove our tables are flawless (BCNF), we proved that for every Minimal FD rule in our system, the left side of the arrow (the determinant) is **always** the primary Candidate Key.
+To prove our tables are in BCNF, we proved that for every Minimal FD rule in our system, the left side of the arrow (the determinant) is **always** the primary Candidate Key.
 
 **Example 1: The "User" Table**
 *   **Minimal FD Rule:** `user_id  →  full_name, email, phone, dob, home_city, account_status`
