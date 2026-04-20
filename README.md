@@ -1,15 +1,15 @@
-# 🌍 Multi-Vendor Travel Booking System
+#  Multi-Vendor Travel Booking System
 
 Welcome to the **Trip and Travel Booking System**, a robust, enterprise-grade application crafted to unify a highly fragmented travel industry. 
 
 ---
 
-## 📖 1. Project Explanation & Problem Statement
+## 1. Project Explanation & Problem Statement
 
-### 🛑 The Problem
+###  The Problem
 Currently, the travel ecosystem is deeply fragmented. Travellers must juggle multiple platforms to book a flight, secure a hotel, arrange holiday packages, and manage their trip insurance. On the other side, vendors (airlines, hotel chains, and tour operators) lack unified analytics to see how they perform in the broader marketplace. Furthermore, platform administrators have zero visibility into cross-sector revenue and platform-wide service quality.
 
-### 💡 Our Solution: Why 4 Portals?
+###  Our Solution: Why 4 Portals?
 We designed a comprehensive, command-line interface (CLI) that solves this fragmentation by uniting all stakeholders under a single architecture. 
 
 To serve the distinct needs of every user role, we divided the ecosystem into **4 Specialized Portals**:
@@ -20,12 +20,12 @@ To serve the distinct needs of every user role, we divided the ecosystem into **
 
 ---
 
-## 🗺️ 2. Database Schema Architecture
+## 2. Database Schema Architecture
 
 The backbone of this platform is a highly normalized relational database handling bookings (Transport, Hotel, Packages), review systems, insurance linking, and complex scheduling.
 
 <details>
-  <summary><b>📄 Click here to unfold Entity-Relationship (ER) Schema</b></summary>
+  <summary><b>Click here to unfold Entity-Relationship (ER) Schema</b></summary>
   
   <br>
 
@@ -34,7 +34,7 @@ The backbone of this platform is a highly normalized relational database handlin
 </details>
 
 <details>
-  <summary><b>📄 Click here to unfold the Relational Database Schema</b></summary>
+  <summary><b>Click here to unfold the Relational Database Schema</b></summary>
   
   <br>
 
@@ -44,11 +44,11 @@ The backbone of this platform is a highly normalized relational database handlin
 
 ---
 
-## 🔥 3. Top 3 Logical & Practical Queries
+## 3. Top 3 Logical & Practical Queries
 
 To demonstrate the analytical power of our platform, here are three of the most advanced and practically applied SQL queries driving our application.
 
-### 🏨 Query 1: Advanced Hotel Search Engine
+### Query 1: Advanced Hotel Search Engine
 **Problem Statement:** A guest wants to find luxury hotels in "Delhi" for "2026-05-01" that have at least a 4.0 star rating, fit within a budget of ₹5,000 to ₹15,000 per night, and has available rooms.
 
 **SQL Solution:**
@@ -85,7 +85,7 @@ ORDER BY h.star_rating DESC, rc.price_per_night ASC;
 
 ---
 
-### 💳 Query 2: Traveller Spending Summary
+###  Query 2: Traveller Spending Summary
 **Problem Statement:** A registered traveller wants to know exactly how much they have spent across all service types (Flights, Hotels, Packages) in their lifetime, strictly excluding any bookings that were cancelled.
 
 **SQL Solution:**
@@ -113,7 +113,7 @@ ORDER BY total_spent DESC;
 
 ---
 
-### 📈 Query 3: Polymorphic Vendor Revenue Aggregation
+###  Query 3: Polymorphic Vendor Revenue Aggregation
 **Problem Statement:** Vendors offer fundamentally different products (Seats vs Rooms vs Tour Packages). An executive at the vendor company needs a single, unified daily revenue report detailing exactly how much money they made across every service they own.
 
 **SQL Solution:**
@@ -157,7 +157,7 @@ ORDER BY booking_date DESC, b.booking_type;
 
 ---
 
-## 📐 4. Minimal Functional Dependencies (FDs) & BCNF Proof
+## 4. Minimal Functional Dependencies (FDs) & BCNF Proof
 
 Our database was meticulously designed to eliminate data redundancy and prevent insert/update/delete anomalies. We achieved this by ensuring every single relation is rigidly in **Boyce-Codd Normal Form (BCNF)**. 
 
@@ -180,7 +180,7 @@ Every junction table (like `Route_Schedule_Class` or `Booking_Insurance`) consis
 
 ---
 
-## 🖥️ 5. Console Portals & Output Showcases
+##5. Console Portals & Output Showcases
 
 The application runs exclusively in the terminal using incredibly premium, interactive, color-coded menus driven by Python.
 
@@ -209,12 +209,11 @@ The application runs exclusively in the terminal using incredibly premium, inter
 **Purpose:** The ultimate CRM and business intelligence tool for travel operators.
 **Problems Solved Here:**
 *   Generating Sales Registers and Revenue Ledgers dynamically.
-*   **Demand Intelligence:** Running algorithms to monitor seat/room capacities, automatically applying tags like *"🚀 HIGH DEMAND"* or *"⏳ FILLING FAST"* to help vendors adjust physical pricing in the real world.
 *   Tracking pending operational bookings so vendors can prepare customer logistics using embedded Contact Phone numbers.
 
 ### 5. The Platform Administration Center
 ![Admin Portal](assets/console_images/admin_portal.png)
-**Purpose:** The "God-Mode" view for platform executives.
+**Purpose:** The Global view for platform executives.
 **Problems Solved Here:**
 *   Auditing macro-level platform Revenue and slicing it up by City, Vendor, or Sub-Service.
 *   Identifying "Poor Services" algorithmically (Services with an average customer rating < 2.5) to maintain platform quality control.
@@ -222,9 +221,9 @@ The application runs exclusively in the terminal using incredibly premium, inter
 
 ---
 
-## ⚙️ 6. System Execution Architecture (The Flow)
+##  6. System Execution Architecture (The Flow)
 
-How does a terminal click turn into a complex data response? Here is our highly decoupled operational flow:
+How does a terminal click turn into a complex data response? Here is our decoupled operational flow:
 
 | Step | Architecture Layer | Action Occurring |
 | :--- | :--- | :--- |
@@ -237,10 +236,7 @@ How does a terminal click turn into a complex data response? Here is our highly 
 
 ---
 
-## 🛠️ 7. Developer Execution Guide
-
-It is incredibly easy to launch this platform.
-
+##  7. Developer Execution Guide
 **1. Database Setup:**
 Ensure PostgreSQL is running. Open `pgAdmin` or `psql` and run the files in this order:
 1.  `ddl_script.sql` (Builds the tables)
