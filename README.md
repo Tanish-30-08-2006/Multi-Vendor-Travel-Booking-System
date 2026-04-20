@@ -2,14 +2,13 @@
 
 Welcome to the **Trip and Travel Booking System**, a robust, enterprise-grade application crafted to unify a highly fragmented travel industry. 
 
----
 
 ## 1. Project Explanation & Problem Statement
 
 ###  The Problem
 Currently, the travel ecosystem is deeply fragmented. Travellers must juggle multiple platforms to book a flight, secure a hotel, arrange holiday packages, and manage their trip insurance. On the other side, vendors (airlines, hotel chains, and tour operators) lack unified analytics to see how they perform in the broader marketplace. Furthermore, platform administrators have zero visibility into cross-sector revenue and platform-wide service quality.
 
-###  Our Solution: Why 4 Portals?
+###  Our Solution: 4 Portals
 We designed a comprehensive, command-line interface (CLI) that solves this fragmentation by uniting all stakeholders under a single architecture. 
 
 To serve the distinct needs of every user role, we divided the ecosystem into **4 Specialized Portals**:
@@ -75,7 +74,7 @@ ORDER BY h.star_rating DESC, rc.price_per_night ASC;
 ```
 **Explanation:** This query links four tables. It filters out sold-out dates instantly by checking the `Room_Availability`. It then applies the budget and quality filters, prioritizing the highest-rated hotels with the most competitive pricing.
 
-**Required Console Input Data (3 Tested Combinations):**
+**Required Console Input Data:**
 
 | Test Case | City Input | Date Input | Min Star Rating | Price Range |
 | :--- | :--- | :--- | :--- | :--- |
@@ -103,7 +102,7 @@ ORDER BY total_spent DESC;
 ```
 **Explanation:** Instead of writing three separate queries for hotels, flights, and packages, we rely on our polymorphic `Booking` super-table. We group the aggregated financial sums (`SUM`) by `booking_type`, strictly filtering out canceled records (`status <> 'cancelled'`).
 
-**Required Console Input Data (3 Tested Combinations):**
+**Required Console Input Data:**
 
 | Test Case | User Selection Input | Period Input |
 | :--- | :--- | :--- |
@@ -147,7 +146,7 @@ ORDER BY booking_date DESC, b.booking_type;
 ```
 **Explanation:** This is a master-class in SQL `UNION ALL` statements. Because a vendor like "Taj Hotels" might eventually offer Transport or Packages, we dynamically build a subquery ledger of *every booking ID* tied to their specific `vendor_id`. We then join this dynamic ledger onto the main `Booking` financial table and group by date.
 
-**Required Console Input Data (3 Tested Combinations):**
+**Required Console Input Data:**
 
 | Test Case | Vendor Selection Input | Time Period Input | Breakdown Input |
 | :--- | :--- | :--- | :--- |
